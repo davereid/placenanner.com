@@ -10,9 +10,29 @@
     <meta property="og:image" content="./nanners/img_20220919_120922.jpg" />
   </head>
   <body>
-      <marquee><h1>🍌 Place Nanner 🍌</h1></marquee>
-    <center>
-      <img src="./nanners/img_20220919_120922.jpg" alt="🍌 Banna!! 🍌" style="max-width: 100%; height: 1024px;"  />
-      </center>
+    <marquee><h1>🍌 Place Nanner 🍌</h1></marquee>
+    <center style="max-width: 1200px; max-height: 80vh; margin: auto;">
+      <img id="nanner" src="" alt="🍌 Banna!! 🍌" style="max-width: 100%; width: 1200px;"  />
+    </center>
+    <script>
+      var request = new XMLHttpRequest();
+      request.open("GET", "./nanners/index.json", false);
+      request.send(null)
+      var nanners = JSON.parse(request.responseText);
+
+      function getNanner() {
+          let nanner = nanners[0].contents[  
+              Math.floor(Math.random() * nanners[0].contents.length)
+          ];
+          return 'nanners/' + nanner.name;
+      }
+
+      function showNanner() {
+          const image = document.getElementById("nanner");
+          image.setAttribute('src', getNanner());
+      }
+
+      showNanner();
+    </script>
   </body>
 </html>
