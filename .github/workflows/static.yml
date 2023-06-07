@@ -35,7 +35,7 @@ jobs:
         run: sudo apt-get install tree
       - name: Generate JSON summary
         working-directory: public/nanners
-        run: tree -J --noreport > index.json
+        run: tree -J --noreport -I index.json > index.json
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
